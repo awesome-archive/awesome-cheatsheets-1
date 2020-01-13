@@ -1,6 +1,6 @@
 ##############################################################################
 # BASH CHEATSHEET (中文速查表)  -  by skywind (created on 2018/02/14)
-# Version: 44, Last Modified: 2018/10/17 03:15
+# Version: 47, Last Modified: 2019/09/24 17:58
 # https://github.com/skywind3000/awesome-cheatsheets
 ##############################################################################
 
@@ -82,6 +82,7 @@ cd -{N}             # 切换到目录栈中的第 N个目录，比如 cd -2 将�
 
 ls                  # 显示当前目录内容，后面可接目录名：ls {dir} 显示指定目录
 ls -l               # 列表方式显示目录内容，包括文件日期，大小，权限等信息
+ls -1               # 列表方式显示目录内容，只显示文件名称，减号后面是数字 1
 ls -a               # 显示所有文件和目录，包括隐藏文件（.开头的文件/目录名）
 ln -s {fn} {link}   # 给指定文件创建一个软链接
 cp {src} {dest}     # 拷贝文件，cp -r dir1 dir2 可以递归拷贝（目录）
@@ -296,6 +297,14 @@ IFS="/" array=($text)     # 按斜杆分隔字符串 text 成数组，并赋值�
 text="${array[*]}"        # 用空格链接数组并赋值给变量
 text=$(IFS=/; echo "${array[*]}")  # 用斜杠链接数组并赋值给变量
 
+A=( foo bar "a  b c" 42 ) # 数组定义
+B=("${A[@]:1:2}")         # 数组切片：B=( bar "a  b c" )
+C=("${A[@]:1}")           # 数组切片：C=( bar "a  b c" 42 )
+echo "${B[@]}"            # bar a  b c
+echo "${B[1]}"            # a  b c
+echo "${C[@]}"            # bar a  b c 42
+echo "${C[@]: -2:2}"      # a  b c 42  减号前的空格是必须的
+
 $(UNIX command)           # 运行命令，并将标准输出内容捕获并返回
 varname=$(id -u user)     # 将用户名为 user 的 uid 赋值给 varname 变量
 
@@ -315,10 +324,14 @@ num=$((1 + (2 + 3) * 2))  # 复杂计算
 
 !!                  # 上一条命令
 !^                  # 上一条命令的第一个单词
+!:n                 # 上一条命令的第n个单词
+!:n-$               # 上一条命令的第n个单词到最后一个单词
 !$                  # 上一条命令的最后一个单词
+!-n:$               # 上n条命令的最后一个单词
 !string             # 最近一条包含string的命令
-!^string1^string2   # 最近一条包含string1的命令, 快速替换为string2, 相当于!!:s/string1/string2/
+!^string1^string2   # 最近一条包含string1的命令, 快速替换string1为string2
 !#                  # 本条命令之前所有的输入内容
+!#:n                # 本条命令之前的第n个单词, 快速备份cp /etc/passwd !#:1.bak
 
 
 ##############################################################################
@@ -338,6 +351,7 @@ function myfunc() {
 myfunc                    # 调用函数 myfunc 
 myfunc arg1 arg2 arg3     # 带参数的函数调用
 myfunc "$@"               # 将所有参数传递给函数
+myfunc "${array[@]}"      # 将一个数组当作多个参数传递给函数
 shift                     # 参数左移
 
 unset -f myfunc           # 删除函数
@@ -745,6 +759,15 @@ lsof -P -i -n | cut -f 1 -d " "| uniq | tail -n +2
 
 # 在 .bashrc / .bash_profile 中加载另外一个文件（比如你保存在 github 上的配置）
 source ~/github/profiles/my_bash_init.sh
+
+# 反向代理：将外网主机（202.115.8.1）端口（8443）转发到内网主机 192.168.1.2:443
+ssh -CqTnN -R 0.0.0.0:8443:192.168.1.2:443  user@202.115.8.1
+
+# 正向代理：将本地主机的 8443 端口，通过 192.168.1.3 转发到 192.168.1.2:443 
+ssh -CqTnN -L 0.0.0.0:8443:192.168.1.2:443  user@192.168.1.3
+
+# socks5 代理：把本地 1080 端口的 socks5 的代理请求通过远程主机转发出去
+ssh -CqTnN -D localhost:1080  user@202.115.8.1
 
 # 终端下正确设置 ALT 键和 BackSpace 键
 http://www.skywind.me/blog/archives/2021
