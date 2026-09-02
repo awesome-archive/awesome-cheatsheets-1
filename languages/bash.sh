@@ -1,6 +1,6 @@
 ##############################################################################
 # BASH CHEATSHEET (中文速查表)  -  by skywind (created on 2018/02/14)
-# Version: 44, Last Modified: 2018/10/17 03:15
+# Version: 47, Last Modified: 2019/09/24 17:58
 # https://github.com/skywind3000/awesome-cheatsheets
 ##############################################################################
 
@@ -47,7 +47,7 @@ CTRL+X CTRL+E       # 用你指定的编辑器，编辑当前命令
 # BASH 基本操作
 ##############################################################################
 
-exit                # 退出当前登陆
+exit                # 退出当前登录
 env                 # 显示环境变量
 echo $SHELL         # 显示你在使用什么 SHELL
 
@@ -82,6 +82,7 @@ cd -{N}             # 切换到目录栈中的第 N个目录，比如 cd -2 将�
 
 ls                  # 显示当前目录内容，后面可接目录名：ls {dir} 显示指定目录
 ls -l               # 列表方式显示目录内容，包括文件日期，大小，权限等信息
+ls -1               # 列表方式显示目录内容，只显示文件名称，减号后面是数字 1
 ls -a               # 显示所有文件和目录，包括隐藏文件（.开头的文件/目录名）
 ln -s {fn} {link}   # 给指定文件创建一个软链接
 cp {src} {dest}     # 拷贝文件，cp -r dir1 dir2 可以递归拷贝（目录）
@@ -115,26 +116,26 @@ stat {fn}           # 显示文件的详细信息
 ##############################################################################
 
 whoami              # 显示我的用户名
-who                 # 显示已登陆用户信息，w / who / users 内容略有不同
-w                   # 显示已登陆用户信息，w / who / users 内容略有不同
-users               # 显示已登陆用户信息，w / who / users 内容略有不同
+who                 # 显示已登录用户信息，w / who / users 内容略有不同
+w                   # 显示已登录用户信息，w / who / users 内容略有不同
+users               # 显示已登录用户信息，w / who / users 内容略有不同
 passwd              # 修改密码，passwd {user} 可以用于 root 修改别人密码
-finger {user}       # 显示某用户信息，包括 id, 名字, 登陆状态等
+finger {user}       # 显示某用户信息，包括 id, 名字, 登录状态等
 adduser {user}      # 添加用户
 deluser {user}      # 删除用户
 w                   # 查看谁在线
 su                  # 切换到 root 用户
-su -                # 切换到 root 用户并登陆（执行登陆脚本）
+su -                # 切换到 root 用户并登录（执行登录脚本）
 su {user}           # 切换到某用户
-su -{user}          # 切换到某用户并登陆（执行登陆脚本）
+su -{user}          # 切换到某用户并登录（执行登录脚本）
 id {user}           # 查看用户的 uid，gid 以及所属其他用户组
 id -u {user}        # 打印用户 uid
 id -g {user}        # 打印用户 gid
 write {user}        # 向某用户发送一句消息
-last                # 显示最近用户登陆列表
-last {user}         # 显示登陆记录
-lastb               # 显示失败登陆记录
-lastlog             # 显示所有用户的最近登陆记录
+last                # 显示最近用户登录列表
+last {user}         # 显示登录记录
+lastb               # 显示失败登录记录
+lastlog             # 显示所有用户的最近登录记录
 sudo {command}      # 以 root 权限执行某命令
 
 
@@ -178,7 +179,7 @@ trap cmd sig1 sig2        # 在脚本中设置信号处理命令
 trap "" sig1 sig2         # 在脚本中屏蔽某信号
 trap - sig1 sig2          # 恢复默认信号处理行为
 
-nohup {command}           # 长期运行某程序，在你退出登陆都保持它运行
+nohup {command}           # 长期运行某程序，在你退出登录都保持它运行
 nohup {command} &         # 在后台长期运行某程序
 disown {PID|JID}          # 将进程从后台任务列表（jobs）移除
 
@@ -189,8 +190,8 @@ wait                      # 等待所有后台进程任务结束
 # 常用命令：SSH / 系统信息 / 网络
 ##############################################################################
 
-ssh user@host             # 以用户 user 登陆到远程主机 host
-ssh -p {port} user@host   # 指定端口登陆主机
+ssh user@host             # 以用户 user 登录到远程主机 host
+ssh -p {port} user@host   # 指定端口登录主机
 ssh-copy-id user@host     # 拷贝你的 ssh key 到远程主机，避免重复输入密码
 scp {fn} user@host:path   # 拷贝文件到远程主机
 scp user@host:path dest   # 从远程主机拷贝文件回来
@@ -208,6 +209,7 @@ vmstat 10                 # 每 10 秒打印一行内存和 CPU情况，CTRL+C �
 free                      # 显示内存和交换区使用情况
 df                        # 显示磁盘使用情况
 du                        # 显示当前目录占用，du . --max-depth=2 可以指定深度
+du -h                     # 显示当前目录占用，-h 以方便阅读的格式输出 (K/M/G)
 uname                     # 显示系统版本号
 hostname                  # 显示主机名称
 showkey -a                # 查看终端发送的按键编码
@@ -246,7 +248,7 @@ rz                        # 接收终端发送过来的文件
 
 varname=value             # 定义变量
 varname=value command     # 定义子进程变量并执行子进程
-echo $varname             # 查看变量内容
+echo "$varname"           # 查看变量内容
 echo $$                   # 查看当前 shell 的进程号
 echo $!                   # 查看最近调用的后台任务进程号
 echo $?                   # 查看最近一条命令的返回码
@@ -296,29 +298,42 @@ IFS="/" array=($text)     # 按斜杆分隔字符串 text 成数组，并赋值�
 text="${array[*]}"        # 用空格链接数组并赋值给变量
 text=$(IFS=/; echo "${array[*]}")  # 用斜杠链接数组并赋值给变量
 
-$(UNIX command)           # 运行命令，并将标准输出内容捕获并返回
+A=( foo bar "a  b c" 42 ) # 数组定义
+B=("${A[@]:1:2}")         # 数组切片：B=( bar "a  b c" )
+C=("${A[@]:1}")           # 数组切片：C=( bar "a  b c" 42 )
+echo "${B[@]}"            # bar a  b c
+echo "${B[1]}"            # a  b c
+echo "${C[@]}"            # bar a  b c 42
+echo "${C[@]: -2:2}"      # a  b c 42  减号前的空格是必须的
+
+$(UNIX command)           # 在 subshell 中运行命令 (不会改变当前 shell 的环境)，并将标准输出内容捕获并返回
 varname=$(id -u user)     # 将用户名为 user 的 uid 赋值给 varname 变量
 
 num=$(expr 1 + 2)         # 兼容 posix sh 的计算，使用 expr 命令计算结果
 num=$(expr $num + 1)      # 数字自增
 expr 2 \* \( 2 + 3 \)     # 兼容 posix sh 的复杂计算，输出 10
 
-num=$((1 + 2))            # 计算 1+2 赋值给 num，使用 bash 独有的 $((..)) 计算
+num=$[1 + 2]              # 计算 1+2 赋值给 num，使用 bash 独有的 $[..] 计算
+num=$((1 + 2))            # 同上, 但该语法由 POSIX shell 指定
 num=$(($num + 1))         # 变量递增
 num=$((num + 1))          # 变量递增，双括号内的 $ 可以省略
 num=$((1 + (2 + 3) * 2))  # 复杂计算
 
 
 ##############################################################################
-# 事件指示符
+# 事件指示符 (仅在交互式 shell 生效)
 ##############################################################################
 
 !!                  # 上一条命令
 !^                  # 上一条命令的第一个单词
+!:n                 # 上一条命令的第n个单词
+!:n-$               # 上一条命令的第n个单词到最后一个单词
 !$                  # 上一条命令的最后一个单词
+!-n:$               # 上n条命令的最后一个单词
 !string             # 最近一条包含string的命令
-!^string1^string2   # 最近一条包含string1的命令, 快速替换为string2, 相当于!!:s/string1/string2/
+!^string1^string2   # 最近一条包含string1的命令, 快速替换string1为string2
 !#                  # 本条命令之前所有的输入内容
+!#:n                # 本条命令之前的第n个单词, 快速备份cp /etc/passwd !#:1.bak
 
 
 ##############################################################################
@@ -338,6 +353,7 @@ function myfunc() {
 myfunc                    # 调用函数 myfunc 
 myfunc arg1 arg2 arg3     # 带参数的函数调用
 myfunc "$@"               # 将所有参数传递给函数
+myfunc "${array[@]}"      # 将一个数组当作多个参数传递给函数
 shift                     # 参数左移
 
 unset -f myfunc           # 删除函数
@@ -493,7 +509,7 @@ for ((i = 0; i < 10; i++)); do echo $i; done
 
 # case 判断
 case expression in 
-    pattern1 )
+    pattern1a | pattern1b | ... )
         statements ;;
     pattern2 )
         statements ;;
@@ -602,6 +618,7 @@ sort -r file                       # 反向排序（降序）
 sort -n file                       # 使用数字而不是字符串进行比较
 sort -t: -k 3n /etc/passwd         # 按 passwd 文件的第三列进行排序
 sort -u file                       # 去重排序
+sort -h file                       # 支持 K/M/G 等量级符号，可与 du 结合使用
 
 
 ##############################################################################
@@ -746,6 +763,15 @@ lsof -P -i -n | cut -f 1 -d " "| uniq | tail -n +2
 # 在 .bashrc / .bash_profile 中加载另外一个文件（比如你保存在 github 上的配置）
 source ~/github/profiles/my_bash_init.sh
 
+# 反向代理：将外网主机（202.115.8.1）端口（8443）转发到内网主机 192.168.1.2:443
+ssh -CqTnN -R 0.0.0.0:8443:192.168.1.2:443  user@202.115.8.1
+
+# 正向代理：将本地主机的 8443 端口，通过 192.168.1.3 转发到 192.168.1.2:443 
+ssh -CqTnN -L 0.0.0.0:8443:192.168.1.2:443  user@192.168.1.3
+
+# socks5 代理：把本地 1080 端口的 socks5 的代理请求通过远程主机转发出去
+ssh -CqTnN -D localhost:1080  user@202.115.8.1
+
 # 终端下正确设置 ALT 键和 BackSpace 键
 http://www.skywind.me/blog/archives/2021
 
@@ -854,6 +880,7 @@ https://github.com/LeCoupa/awesome-cheatsheets/blob/master/languages/bash.sh
 https://devhints.io/bash
 https://github.com/jlevy/the-art-of-command-line
 https://yq.aliyun.com/articles/68541
+https://tiswww.case.edu/php/chet/bash/article.pdf
 
 # vim: set ts=4 sw=4 tw=0 et :
 

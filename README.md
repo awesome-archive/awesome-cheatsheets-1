@@ -1,6 +1,8 @@
 > 超级速查表 - 编程语言、框架和开发工具的速查表，单个文件包含一切你需要知道的东西 :zap:
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/skywind3000/awesome-cheatsheets) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/skywind3000/awesome-cheatsheets/blob/master/LICENSE)
+[![Backers on Open Collective](https://opencollective.com/awesome-cheatsheets/backers/badge.svg)](#backers) 
+[![Sponsors on Open Collective](https://opencollective.com/awesome-cheatsheets/sponsors/badge.svg)](#sponsors) 
 
 [![](awesome.png)](https://github.com/skywind3000/awesome-cheatsheets)
 ​                                                                                      
@@ -17,24 +19,62 @@
 ### :page_with_curl:编程语言
 
 - [Bash](languages/bash.sh)
+- [JavaScript](languages/javascript.md)
 - [Go](languages/golang.go)
-- [Php](languages/php.php)
+- [PHP](languages/php.php)
 - [VimScript](languages/vimscript.md)
 - [Python](languages/python.md)
+- [Lua](languages/lua.lua)
 
 ### :wrench:开发工具
 
 - [Gdb](tools/gdb.txt)
 - [Adb](tools/adb.txt)
 - [Tmux](tools/tmux.txt)
+- [Git](tools/git.txt)
+- [FFmpeg](tools/ffmpeg.sh)
+- [Linux ip command](tools/ip.txt)
 
 ### :pencil:文本编辑
 
 - [VIM](editors/vim.txt)
 - [Nano](editors/nano.txt)
+- [Emacs](editors/emacs.txt)
+- [Org Mode](editors/org.org)
 
-## :pray:欢迎贡献
+## :star:欢迎关注
 
-[![@chlins](https://avatars2.githubusercontent.com/u/31262637?s=56)](https://github.com/chlins) [![@microcisco](https://avatars1.githubusercontent.com/u/9547228?s=56)](https://github.com/microcisco) [![@ziyenano](https://avatars0.githubusercontent.com/u/11867700?s=56)](https://github.com/ziyenano) [![@fyzzy1943](https://avatars3.githubusercontent.com/u/5002182?s=56)](https://github.com/fyzzy1943)[![@0xPoker](https://avatars1.githubusercontent.com/u/30389809?s=56&v=4)](https://github.com/490694561)
+- 我的博客：https://skywind.me/blog
+- 个人推特：https://x.com/skywind3000
+
+## :pray:感谢贡献
+
+本项目的存在，离不开参与贡献的网友们，感谢：
+
+<a href="https://github.com/skywind3000/awesome-cheatsheets/graphs/contributors"><img src="https://opencollective.com/awesome-cheatsheets/contributors.svg?width=890&button=false" /></a>
 
 希望把你的名字和头像列在这里么？欢迎把你熟悉的编程语言、框架和工具的常用知识点做成 cheatsheet 用 PR 发过来。
+
+<!--
+
+### 支持者们
+
+感谢支持者 🙏 [[成为支持者](https://opencollective.com/awesome-cheatsheets#backer)]
+
+<a href="https://opencollective.com/awesome-cheatsheets#backers" target="_blank"><img src="https://opencollective.com/awesome-cheatsheets/backers.svg?width=890"></a>
+
+-->
+
+支持本项目，除了贡献代码，还能成为一名 sponsor，你的图标会显示在这里，点击可以跳转到你的主页 [[成为赞助者](https://opencollective.com/awesome-cheatsheets#sponsor)]
+
+<a href="https://opencollective.com/awesome-cheatsheets/sponsor/0/website" target="_blank"><img src="https://opencollective.com/awesome-cheatsheets/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/awesome-cheatsheets/sponsor/1/website" target="_blank"><img src="https://opencollective.com/awesome-cheatsheets/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/awesome-cheatsheets/sponsor/2/website" target="_blank"><img src="https://opencollective.com/awesome-cheatsheets/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/awesome-cheatsheets/sponsor/3/website" target="_blank"><img src="https://opencollective.com/awesome-cheatsheets/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/awesome-cheatsheets/sponsor/4/website" target="_blank"><img src="https://opencollective.com/awesome-cheatsheets/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/awesome-cheatsheets/sponsor/5/website" target="_blank"><img src="https://opencollective.com/awesome-cheatsheets/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/awesome-cheatsheets/sponsor/6/website" target="_blank"><img src="https://opencollective.com/awesome-cheatsheets/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/awesome-cheatsheets/sponsor/7/website" target="_blank"><img src="https://opencollective.com/awesome-cheatsheets/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/awesome-cheatsheets/sponsor/8/website" target="_blank"><img src="https://opencollective.com/awesome-cheatsheets/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/awesome-cheatsheets/sponsor/9/website" target="_blank"><img src="https://opencollective.com/awesome-cheatsheets/sponsor/9/avatar.svg"></a>
+
